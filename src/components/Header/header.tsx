@@ -4,12 +4,14 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <Navbar expand="lg" className="bg-body-tertiary" bg="dark" data-bs-theme="dark">
       <Container fluid>
-        <Navbar.Brand href="#">El Buen Sabor</Navbar.Brand>
+        <Navbar.Brand onClick={()=>navigate('/')}>El Buen Sabor</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
@@ -17,11 +19,10 @@ const Header = () => {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Sobre Nosotros</Nav.Link>
+            <Nav.Link onClick={()=>navigate('/sobrenos')}>Sobre Nosotros</Nav.Link>
             <NavDropdown title="Ayuda" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Contacto</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">Ubicacion</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>navigate('/contacto')}>Contacto</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>navigate('/ubicacion')}>Ubicacion</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link href="#" disabled>
               Menu

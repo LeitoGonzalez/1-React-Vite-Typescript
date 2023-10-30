@@ -1,16 +1,17 @@
-import Cards from "./components/Cards/Cards"
-import CarouselHome from "./components/CarouselHome/CarouselHome"
-import Header from "./components/Header/header"
+import Header from "./components/Header/header";
+
+import AppRoutes from "./routes/AppRoutes";
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
-
   return (
     <>
-    <Header/>
-    <CarouselHome/>
-    <Cards/>
+      <Router>
+        <Header />
+          <AppRoutes/>
+      </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
