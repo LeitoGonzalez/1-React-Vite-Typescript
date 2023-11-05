@@ -20,13 +20,12 @@ const Header = () => {
             navbarScroll
           >
             <Nav.Link onClick={()=>navigate('/sobrenos')}>Sobre Nosotros</Nav.Link>
+            <Nav.Link onClick={()=>navigate('/menu')}>Menu</Nav.Link>
+            <Nav.Link onClick={()=>navigate('/componentes')}>Componentes</Nav.Link>
             <NavDropdown title="Ayuda" id="navbarScrollingDropdown">
               <NavDropdown.Item onClick={()=>navigate('/contacto')}>Contacto</NavDropdown.Item>
               <NavDropdown.Item onClick={()=>navigate('/ubicacion')}>Ubicacion</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Menu
-            </Nav.Link>
           </Nav>
           <Form className="d-flex">
             <Form.Control
