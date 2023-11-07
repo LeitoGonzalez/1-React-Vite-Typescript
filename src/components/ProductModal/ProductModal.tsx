@@ -4,7 +4,7 @@ import { Product } from "../../types/Product";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { ProductService } from "../../services/ProductService";
-import {ToastContainer,toast} from 'react-toastify'
+import {toast} from 'react-toastify'
 
 type ProductModalProps = {
   show: boolean;
