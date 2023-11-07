@@ -35,6 +35,17 @@ const ProductModal = ({
     }
   };
 
+  //DELETE
+  const handleDelete=async()=>{
+    try{
+      await ProductService.deleteProduct(prod.id);
+      onHide();
+    }catch(error){
+      console.error(error);
+    }
+  }
+
+
   //yup, esquema de validacion
   const validationSchema = () => {
     return Yup.object().shape({
@@ -59,7 +70,25 @@ const ProductModal = ({
   return (
     <>
       {modalType === ModalType.DELETE ? (
-        <>lo dejamos vacio</>
+        <>
+          <Modal show={show} onHide={onHide} centered backdrop="static">
+            <Modal.Header closeButton>
+              <Modal.Title>{title}</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+              <p>
+                ¿Está seguro que desea eliminar el producto?
+                <strong>{prod.title}</strong>
+              </p>
+            </Modal.Body>
+            
+            <Modal.Footer>
+              <Button variant="secondary" onClick={onHide}>Cancelar</Button>
+              <Button variant="danger" onClick={handleDelete}>Eliminar</Button>
+            </Modal.Footer>
+          </Modal>
+        </>
       ) : (
         <Modal
           className="modal-xl"

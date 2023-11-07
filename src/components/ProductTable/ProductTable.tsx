@@ -5,6 +5,8 @@ import Loader from "../Loader/Loader";
 import { Button, Table } from "react-bootstrap";
 import { ModalType } from "../../types/ModalType";
 import ProductModal from "../ProductModal/ProductModal";
+import EditButton from "../EditButton/EditButton";
+import DeleteButton from "../DeleteButton/DeleteButton";
 
 const ProductTable = () => {
   //variable q va a contener los datos recibidos por la api
@@ -82,6 +84,8 @@ const ProductTable = () => {
               <th>Descripcion</th>
               <th>Categoria</th>
               <th>Imagen</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -98,6 +102,8 @@ const ProductTable = () => {
                     style={{ width: "50px" }}
                   />
                 </td>
+                <td><EditButton onClick={()=>handleClick("Editar producto", product, ModalType.UPDATE)}/></td>
+                <td><DeleteButton onClick={()=>handleClick("Borrar producto", product, ModalType.DELETE)}/></td>
               </tr>
             ))}
           </tbody>
