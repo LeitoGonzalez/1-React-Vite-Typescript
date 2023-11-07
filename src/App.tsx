@@ -3,7 +3,7 @@ import Header from "./components/Header/header";
 import { Suspense } from "react";
 import AppRoutes from "./routes/AppRoutes";
 import { BrowserRouter as Router } from "react-router-dom";
-import Footer from "./components/Footer.tsx/Footer";
+import Footer from "./components/Footer/Footer";
 import Loader from "./components/Loader/Loader";
 
 function App() {
