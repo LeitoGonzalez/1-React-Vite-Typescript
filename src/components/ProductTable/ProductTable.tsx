@@ -15,7 +15,12 @@ const ProductTable = () => {
   //variable que muestra el componente Loader hasta q se reciban los datos de la api
   const [isLoading, setIsLoading] = useState(true);
 
-  //este hook se va a ejecutar cada vez que se renderice el componente
+  //variable que va a ejecutar los datos de la tabla luego de cada operacion exitosa
+  const [refreshData, setRefreshData] = useState(false);
+
+
+  //este hook se va a ejecutar cada vez que se renderice el componente o
+  //refreshData cambie de estado
   useEffect(() => {
     //llamamos a la funcion para obtener todos los productos declarados en el ProductService
     const fetchProducts = async () => {
@@ -25,7 +30,7 @@ const ProductTable = () => {
     };
 
     fetchProducts();
-  }, []);
+  }, [refreshData]);
 
   console.log(JSON.stringify(products, null, 2));
   //stringify es para convertir un objeto JS en una cadena JSON
@@ -117,6 +122,7 @@ const ProductTable = () => {
           title={title}
           modalType={modalType}
           prod={product}
+          refreshData={setRefreshData}
         />
       )}
     </div>

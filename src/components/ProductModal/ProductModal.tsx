@@ -4,6 +4,7 @@ import { Product } from "../../types/Product";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { ProductService } from "../../services/ProductService";
+import {ToastContainer,toast} from 'react-toastify'
 
 type ProductModalProps = {
   show: boolean;
@@ -11,6 +12,7 @@ type ProductModalProps = {
   title: string;
   modalType: ModalType;
   prod: Product;
+  refreshData: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const ProductModal = ({
@@ -19,6 +21,7 @@ const ProductModal = ({
   title,
   modalType,
   prod,
+  refreshData,
 }: ProductModalProps) => {
   //CREATE - ACTUALIZAR
   const handleSaveUpdate = async (pro: Product) => {
@@ -29,22 +32,32 @@ const ProductModal = ({
       } else {
         await ProductService.updateProduct(pro.id, pro);
       }
+
+      toast.success(isNew ? "Producto creado" : "Producto actualizado", {
+        position: "top-center",
+      });
+
       onHide();
+      refreshData((prevState) => !prevState);
+
     } catch (error) {
       console.error(error);
+      toast.error("Ha ocurrido un error D:");
     }
   };
 
   //DELETE
-  const handleDelete=async()=>{
-    try{
+  const handleDelete = async () => {
+    try {
       await ProductService.deleteProduct(prod.id);
+      toast.success("Producto eliminado con exito", { position: "top-center" });
       onHide();
-    }catch(error){
+      refreshData((prevState) => !prevState);
+    } catch (error) {
       console.error(error);
+      toast.error("Ha ocurrido un error D:");
     }
-  }
-
+  };
 
   //yup, esquema de validacion
   const validationSchema = () => {
@@ -82,10 +95,14 @@ const ProductModal = ({
                 <strong>{prod.title}</strong>
               </p>
             </Modal.Body>
-            
+
             <Modal.Footer>
-              <Button variant="secondary" onClick={onHide}>Cancelar</Button>
-              <Button variant="danger" onClick={handleDelete}>Eliminar</Button>
+              <Button variant="secondary" onClick={onHide}>
+                Cancelar
+              </Button>
+              <Button variant="danger" onClick={handleDelete}>
+                Eliminar
+              </Button>
             </Modal.Footer>
           </Modal>
         </>
