@@ -17,7 +17,7 @@ export const Cards = () => {
             objectFit: "cover",
             borderRadius: "5px",
           }}
-          src="public/item1.jpg"
+          src="./item1.jpg"
           alt=""
         />
         <Card.Body>
@@ -38,7 +38,7 @@ export const Cards = () => {
             objectFit: "cover",
             borderRadius: "5px",
           }}
-          src="public/item2.jpg"
+          src="./item2.jpg"
           alt=""
         />
         <Card.Body>
@@ -59,7 +59,7 @@ export const Cards = () => {
             objectFit: "cover",
             borderRadius: "5px",
           }}
-          src="public/item3.jpg"
+          src="./item3.jpg"
           alt=""
         />
         <Card.Body>
