@@ -33,7 +33,7 @@ const CarouselHome = () => {
         <img
           className="d-block w-100"
           style={{ maxHeight: "500px", objectFit: "cover" }}
-          src="/carousel3.png"
+          src="/src/assets/images/carousel3.jpeg"
           alt=""
         />
         <Carousel.Caption>
